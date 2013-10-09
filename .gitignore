@@ -1,0 +1,6 @@
+*.o
+*.pyc
+*.root
+*.d
+*.so
+*.txt
