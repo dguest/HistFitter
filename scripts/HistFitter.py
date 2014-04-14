@@ -1,9 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 import ROOT
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 
 from ROOT import gROOT,gSystem,gDirectory,RooAbsData,RooRandom,RooWorkspace
-gSystem.Load("libSusyFitter.so")
+from scharmfit.utils import load_susyfit
+load_susyfit()
 from ROOT import ConfigMgr
 gROOT.Reset()
 import os
@@ -286,4 +287,4 @@ if __name__ == "__main__":
         cons.interact("Continuing interactive session... press Ctrl+d to exit")
         pass
 
-    log.info("Leaving HistFitter... Bye!")
+    log.info("Leaving HistFitter... don't slit your wrists on the way out")

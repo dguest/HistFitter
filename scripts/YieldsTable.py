@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 
 # from sys import exit
 # from ROOT import gSystem
 # gSystem.Load("libCombinationTools")
 
 from ROOT import gROOT,gSystem,gDirectory
-from pyroot.utils import load_susyfit
+from scharmfit.utils import load_susyfit
 load_susyfit()
 gROOT.Reset()
 
