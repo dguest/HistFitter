@@ -1,3 +1,4 @@
+// -*- c++ -*-
 // vim: ts=4:sw=4
 #ifndef StatTools_hh
 #define StatTools_hh

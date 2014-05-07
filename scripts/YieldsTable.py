@@ -3,6 +3,8 @@
 # from sys import exit
 # from ROOT import gSystem
 # gSystem.Load("libCombinationTools")
+import ROOT
+ROOT.PyConfig.IgnoreCommandLineOptions = True
 
 from ROOT import gROOT,gSystem,gDirectory
 from scharmfit.utils import load_susyfit
