@@ -1,9 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
+import ROOT
+ROOT.PyConfig.IgnoreCommandLineOptions = True
 from ROOT import gROOT,gSystem,gDirectory
-from pyroot.utils import load_susyfit
 
+from scharmfit.utils import load_susyfit
 load_susyfit()
-from ROOT import ConfigMgr,FitConfig #this module comes from gSystem.Load("libSusyFitter.so")
+# from ROOT import ConfigMgr,FitConfig #this module comes from gSystem.Load("libSusyFitter.so")
 gROOT.Reset()
 
 from ROOT import TFile, RooWorkspace, TObject, TString, RooAbsReal, RooRealVar, RooFitResult, RooDataSet, RooAddition, RooArgSet,RooAbsData,RooRandom 

@@ -47,7 +47,10 @@ Total statistical $(\\sqrt{N_{\\rm exp}})$             '''
 Total background systematic              '''
 
   for region in signalRegions:
-    percentage = m[region]['totsyserr']/m[region]['nfitted'] * 100.0    
+    if m[region]['nfitted'] == 0.0:
+      percentage = 0.0
+    else:
+      percentage = m[region]['totsyserr']/m[region]['nfitted'] * 100.0
     tableline += " & $\\pm " + str(("%.2f" %m[region]['totsyserr'])) + "\ [" + str(("%.2f" %percentage)) + "\\%] $       "
 
   tableline += '''      \\\\
@@ -95,11 +98,6 @@ Total background systematic              '''
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
 \\end{tabular*}
 \\end{center}
-\\caption[Breakdown of uncertainty on background estimates]{
-Breakdown of the dominant systematic uncertainties on background estimates in the various signal regions.
-Note that the individual uncertainties can be correlated, and do not necessarily add up quadratically to 
-the total background uncertainty. The percentages show the size of the uncertainty relative to the total expected background.
-\\label{table.results.bkgestimate.uncertainties.%s}}
 \\end{table}
 %%''' % (chanStr) 
     

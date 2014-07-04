@@ -40,20 +40,20 @@ extern void G__set_cpp_environmentSusyFitter_Dict();
 #include "Heaviside.h"
 #include "HypoTestTool.h"
 #include "LimitResult.h"
+#include "profile_get_Pvalue.h"
 #include "RooExpandedFitResult.h"
 #include "RooHist.h"
 #include "RooPlot.h"
-#include "SRootFinder.h"
 #include "SigmaLR.h"
 #include "Significance.h"
+#include "SRootFinder.h"
 #include "StatTools.h"
 #include "TEasyFormula.h"
 #include "TMsgLogger.h"
+#include "toy_utils.h"
 #include "Utils.h"
 #include "ValidationUtils.h"
 #include "XtraValues.h"
-#include "profile_get_Pvalue.h"
-#include "toy_utils.h"
 #include <algorithm>
 namespace std { }
 using namespace std;
@@ -209,18 +209,18 @@ extern G__linked_taginfo G__SusyFitter_DictLN_TMatrixTlEfloatgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_vectorlEpairlEstringcOintgRcOallocatorlEpairlEstringcOintgRsPgRsPgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_reverse_iteratorlEvectorlEpairlEstringcOintgRcOallocatorlEpairlEstringcOintgRsPgRsPgRcLcLiteratorgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_RooExpandedFitResult;
+extern G__linked_taginfo G__SusyFitter_DictLN_SigmaLR;
 extern G__linked_taginfo G__SusyFitter_DictLN_StatTools;
 extern G__linked_taginfo G__SusyFitter_DictLN_StatToolscLcLSRootFinder;
-extern G__linked_taginfo G__SusyFitter_DictLN_SigmaLR;
 extern G__linked_taginfo G__SusyFitter_DictLN_TMap;
 extern G__linked_taginfo G__SusyFitter_DictLN_TEasyFormula;
 extern G__linked_taginfo G__SusyFitter_DictLN_maplEintcOTStringcOlesslEintgRcOallocatorlEpairlEconstsPintcOTStringgRsPgRsPgR;
+extern G__linked_taginfo G__SusyFitter_DictLN_listlELimitResultcOallocatorlELimitResultgRsPgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_pairlEunsignedsPintcOintgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_vectorlEpairlEunsignedsPintcOintgRcOallocatorlEpairlEunsignedsPintcOintgRsPgRsPgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_reverse_iteratorlEvectorlEpairlEunsignedsPintcOintgRcOallocatorlEpairlEunsignedsPintcOintgRsPgRsPgRcLcLiteratorgR;
 extern G__linked_taginfo G__SusyFitter_DictLN_XtraValues;
 extern G__linked_taginfo G__SusyFitter_DictLN_ValidationUtils;
-extern G__linked_taginfo G__SusyFitter_DictLN_listlELimitResultcOallocatorlELimitResultgRsPgR;
 
 /* STUB derived class for protected member access */
 typedef vector<ChannelStyle,allocator<ChannelStyle> > G__vectorlEChannelStylecOallocatorlEChannelStylegRsPgR;

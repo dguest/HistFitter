@@ -401,15 +401,20 @@ void ConfigMgr::doUpperLimit(int i) {
 }
 
 void ConfigMgr::doUpperLimit(FitConfig* fc) {
+  puts("here");
     TString outfileName = m_outputFileName;
     outfileName.ReplaceAll(".root","_upperlimit.root");
+    printf("before outfile: %s", outfileName.Data());
     TFile* outfile = TFile::Open(outfileName,"UPDATE");
+    puts("after outfile");
     if(outfile->IsZombie()) { 
         m_logger << kERROR << "TFile <" << outfileName << "> could not be opened" << GEndl; 
         return; 
     }
 
+    puts("before infile");
     TFile* inFile = TFile::Open(fc->m_inputWorkspaceFileName);
+    puts("after infile");
     if(!inFile){ 
         m_logger << kERROR << "doUL : TFile <" << fc->m_inputWorkspaceFileName << "> could not be opened" << GEndl; 
         return; 
@@ -439,7 +444,7 @@ void ConfigMgr::doUpperLimit(FitConfig* fc) {
     }
 
     /// store ul as nice plot ..
-    if ( hypo!=0 ) {
+    if ( hypo!=0 && false) {
         TString outputPrefix = TString(gSystem->DirName(outfileName))+"/"+fc->m_signalSampleName.Data();
         RooStats::AnalyzeHypoTestInverterResult( hypo, m_calcType, m_testStatType, m_useCLs, m_nPoints, outputPrefix, ".eps") ;
     }

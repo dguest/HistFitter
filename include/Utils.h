@@ -1,3 +1,4 @@
+// this is -*- c++ -*-
 // vim: ts=4:sw=4
 #ifndef Utils_hh
 #define Utils_hh
