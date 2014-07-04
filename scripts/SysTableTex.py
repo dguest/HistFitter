@@ -99,7 +99,7 @@ Total background systematic              '''
 \\end{tabular*}
 \\end{center}
 \\end{table}
-%%''' % (chanStr) 
+%%'''
     
   return tableline
 
