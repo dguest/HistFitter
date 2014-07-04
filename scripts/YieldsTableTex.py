@@ -192,11 +192,9 @@ MC exp. SM events             '''
 def tablestart():
 
   start = '''
-
-\\begin{table}
 \\begin{center}
 \\setlength{\\tabcolsep}{0.0pc}
-{\\tiny
+{
 %%'''
 
   return start
@@ -225,15 +223,8 @@ def tableend2(signalregion='3+ jets, loose',suffix='sr3jl'):
   end = '''%%
 }
 \\end{center}
-\\caption{Signal region: %s. Fit results for an integrated luminosity of $1035$\,\ipb.
-The results are obtained from the control regions using the discovery fit (see text for details). 
-Nominal MC expectations (normalised to MC cross-sections) are given for comparison. 
-The Monte Carlo QCD estimates are provided for illustrational purposes only, and are not used in the fit.
-The errors shown are the statistical plus systematic uncertainties, except for the error on the background estimate in the signal region, which is the systematic uncertainty only.
-All presented errors have been derived using MINOS.}
-\\label{table.results.systematics.in.logL.fit.%s}
-\\end{table}
-%%''' % (signalregion,suffix)
+%%
+'''
 
   return end
 

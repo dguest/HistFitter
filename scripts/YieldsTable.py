@@ -349,7 +349,7 @@ if __name__ == "__main__":
   f = open(outputFileName, 'w')
   f.write( tablestart() )
   f.write( tablefragment(m3, '', regionsList_2Digits,sampleList,showBeforeFitError) )
-  f.write( tableend4(regionsList_1Digit, chanStr, mentionCh) )
+  f.write( tableend2() )
   f.close()
   print "\nResult written in:"
   print outputFileName
