@@ -29,6 +29,18 @@ def getnamemap():
 
   return namemap
 
+def _slim_regions(regionList, regionCat):
+  """
+  remove the regions that don't exits.
+  God do I hate HistFitter... I can't vouch for the correctness
+  of anything that comes out of it (sorry LHC).
+  """
+  keep_regions = []
+  for region in regionList:
+    full_name = Util.GetFullRegionName(regionCat, region)
+    if str(full_name):
+      keep_regions.append(region)
+  return keep_regions
   
 
 def latexfitresults( filename, region='3jL', sample='', resultName="RooExpandedFitResult_afterFit", dataname='obsData', doAsym=True):
@@ -405,21 +417,26 @@ if __name__ == "__main__":
 
   for chan in origChanList:
 
-    if not chosenSample:
-        if method == "2":
-            regSys = latexfitresults_method2(wsFileName,resultName,chan,'',fitRegionsStr,'obsData',doAsym)
-        else:
-            regSys = latexfitresults(wsFileName,chan,'',resultName,'obsData',doAsym)
-        chanSys[chan] = regSys
-        chanList.append(chan)
-    else:
-      for sample in sampleList:
-        if method == "2":
-          regSys = latexfitresults_method2(wsFileName,resultName,chan,sample,fitRegionsStr,'obsData',doAsym)
-        else:
-          regSys = latexfitresults(wsFileName,chan,sample,resultName,'obsData',doAsym)
-        chanSys[chan+"_"+sample] = regSys
-        chanList.append(chan+"_"+sample)
+    # this 'try' is a hack, I don't care about this software enough to
+    # make it good. DG
+    try:
+      if not chosenSample:
+          if method == "2":
+              regSys = latexfitresults_method2(wsFileName,resultName,chan,'',fitRegionsStr,'obsData',doAsym)
+          else:
+              regSys = latexfitresults(wsFileName,chan,'',resultName,'obsData',doAsym)
+          chanSys[chan] = regSys
+          chanList.append(chan)
+      else:
+        for sample in sampleList:
+          if method == "2":
+            regSys = latexfitresults_method2(wsFileName,resultName,chan,sample,fitRegionsStr,'obsData',doAsym)
+          else:
+            regSys = latexfitresults(wsFileName,chan,sample,resultName,'obsData',doAsym)
+          chanSys[chan+"_"+sample] = regSys
+          chanList.append(chan+"_"+sample)
+    except AttributeError:
+      pass
 
   line_chanSysTight = tablefragment(chanSys,'Signal',chanList,skiplist,chanStr,showPercent)
   
