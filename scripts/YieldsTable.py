@@ -20,6 +20,19 @@ import sys
 
 # Main function calls are defined below.
 
+def _slim_regions(regionList, regionCat):
+  """
+  remove the regions that don't exits.
+  God do I hate HistFitter... I can't vouch for the correctness
+  of anything that comes out of it (sorry LHC).
+  """
+  keep_regions = []
+  for region in regionList:
+    full_name = Util.GetFullRegionName(regionCat, region)
+    if str(full_name):
+      keep_regions.append(region)
+  return keep_regions
+
 def latexfitresults(filename,regionList,sampleList,exactRegionNames=False,dataname='obsData',showSum=False, doAsym=True):
   workspacename = 'w'
   w = Util.GetWorkspaceFromFile(filename,'w')
@@ -46,8 +59,9 @@ def latexfitresults(filename,regionList,sampleList,exactRegionNames=False,datana
   regionCat = w.obj("channelCat")
   data_set.table(regionCat).Print("v");
 
+  regionList = _slim_regions(regionList, regionCat)
+
   regionFullNameList = [ Util.GetFullRegionName(regionCat, region) for region in regionList]
-  print regionFullNameList
 
   ###
 
