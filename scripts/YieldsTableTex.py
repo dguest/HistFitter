@@ -192,7 +192,6 @@ MC exp. SM events             '''
 def tablestart():
 
   start = '''
-\\setlength{\\tabcolsep}{0.0pc}
 {
 %%'''
 
