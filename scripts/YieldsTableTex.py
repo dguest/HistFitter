@@ -27,7 +27,7 @@ def tablefragment(m, channel, signalregionslist,sampleList,showBeforeFitError):
   tableline = ''
   
   tableline += '''
-\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}l'''
+\\begin{tabular}{l'''
 
   for region in m['names']:
     tableline += "r"   
@@ -180,7 +180,7 @@ MC exp. SM events             '''
 
   tableline +='''     \\\\
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
-\\end{tabular*}
+\\end{tabular}
 %%''' 
 
   return tableline
@@ -192,7 +192,6 @@ MC exp. SM events             '''
 def tablestart():
 
   start = '''
-\\begin{center}
 \\setlength{\\tabcolsep}{0.0pc}
 {
 %%'''
@@ -222,7 +221,6 @@ def tableend2(signalregion='3+ jets, loose',suffix='sr3jl'):
 
   end = '''%%
 }
-\\end{center}
 %%
 '''
 

@@ -3,9 +3,7 @@ def tablefragment(m,table,signalRegions,skiplist,chanStr,showPercent):
   tableline = ''
 
   tableline += '''
-\\begin{center}
-\\setlength{\\tabcolsep}{0.0pc}
-\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}l'''
+\\begin{tabular}{l'''
 
   for region in signalRegions:
     tableline += "c"   
@@ -95,8 +93,7 @@ Total background systematic              '''
 
   tableline += '''
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
-\\end{tabular*}
-\\end{center}
+\\end{tabular}
 %%'''
     
   return tableline
