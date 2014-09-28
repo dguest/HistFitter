@@ -24,16 +24,6 @@ def tablefragment(m,tabname):
   tableline += '''
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
 \\end{tabular}
-\\caption[Breakdown of upper limits.]{
-Left to right: 95\\%% CL upper limits on the visible cross section
-($\\langle\\epsilon\\sigma\\rangle_{\\rm obs}^{95}$) and on the number of
-signal events ($S_{\\rm obs}^{95}$ ).  The third column
-($S_{\\rm exp}^{95}$) shows the 95\\%% CL upper limit on the number of
-signal events, given the expected number (and $\\pm 1\\sigma$
-excursions on the expectation) of background events.
-The last two columns
-indicate the $CL_B$ value, i.e. the confidence level observed for
-the background-only hypothesis, and the discovery $p$-value ($p(s = 0)$).
 %%'''
 
   return tableline
