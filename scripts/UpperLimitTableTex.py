@@ -3,10 +3,7 @@ def tablefragment(m,tabname):
   tableline = ''
 
   tableline += '''
-\\begin{table}
-\\begin{center}
-\\setlength{\\tabcolsep}{0.0pc}
-\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}lccccc}
+\\begin{tabular}{lccccc}
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
 {\\bf Signal channel}                        & $\\langle\\epsilon{\\rm \\sigma}\\rangle_{\\rm obs}^{95}$[fb]  &  $S_{\\rm obs}^{95}$  & $S_{\\rm exp}^{95}$ & $CL_{B}$ & $p(s=0)$  \\\\
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
@@ -26,8 +23,7 @@ def tablefragment(m,tabname):
 
   tableline += '''
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
-\\end{tabular*}
-\\end{center}
+\\end{tabular}
 \\caption[Breakdown of upper limits.]{
 Left to right: 95\\%% CL upper limits on the visible cross section
 ($\\langle\\epsilon\\sigma\\rangle_{\\rm obs}^{95}$) and on the number of
@@ -37,10 +33,8 @@ signal events, given the expected number (and $\\pm 1\\sigma$
 excursions on the expectation) of background events.
 The last two columns
 indicate the $CL_B$ value, i.e. the confidence level observed for
-the background-only hypothesis, and the discovery $p$-value ($p(s = 0)$). 
-\\label{table.results.exclxsec.pval.%s}}
-\\end{table}
-%%''' %(tabname)
+the background-only hypothesis, and the discovery $p$-value ($p(s = 0)$).
+%%'''
 
   return tableline
 
@@ -59,6 +53,16 @@ def givetuplesym(m,name):
   ntuple = ( m[name][0], m[name][1], m[name][2], m[name][3] , m[name][4], m[name][5], m[name][6])
   return ntuple
 
+def transconfig(config):
+  """translate a configuration for the scharm analysis"""
+  pfx = 'mct'
+  if not config.startswith(pfx):
+    return config
+  try:
+    return r'$m_{{\rm CT}} > {}$ GeV'.format(int(config[len(pfx):]))
+  except ValueError:
+    return config
+
 def addlinetosystable(tableline,m,name):
   try:
     m.has_key(name)
@@ -67,7 +71,7 @@ def addlinetosystable(tableline,m,name):
     return tableline
 
   printname = name
-  printname = printname.replace('_','\_')
+  printname = transconfig(printname.replace('_','\_'))
   #    tableline += '\n'+ printname + '''   & $%.2f^{+%.2f}_{-%.2f}$ &  $%.1f$  & ${%.1f}^{+%.1f}_{-%.1f}$ & $%.2f$  &  $%.2f$ \\\\ ## AK:  Commented OUT with p(s=0), old
   #tableline += '\n'+ printname + '''   & $%.2f$ &  $%.1f$  & ${%.1f}^{+%.1f}_{-%.1f}$ & $%.2f$ &  \\\\ # w/o p0 value
   tableline += '\n'+ printname + '''   & $%.2f$ &  $%.1f$  & ${%.1f}^{+%.1f}_{-%.1f}$ & $%.2f$ &  $%.2f$  \\\\ 
