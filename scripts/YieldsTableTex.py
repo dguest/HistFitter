@@ -20,7 +20,20 @@ def exampletable():
 
   return m
 
-
+def _pull_line(m, add_stat):
+  if add_stat:
+    tableline = '''
+$\\text{excess} / \\sigma_{\\text{syst + stat}}$        '''
+  else:
+    tableline = '''
+$\\text{excess} / \\sigma_{\\text{syst}}$        '''
+  for index, n in enumerate(m['TOTAL_FITTED_bkg_events']):
+      syst_err = m['TOTAL_FITTED_bkg_events_err'][index]
+      nobs = m['nobs'][index]
+      err = (syst_err**2 + nobs)**0.5 if add_stat else syst_err
+      pull = -(n - nobs) / err
+      tableline += " & ${:+.2f}$".format(pull)
+  return tableline + '\\\\ \n'
 
 def tablefragment(m, channel, signalregionslist,sampleList,showBeforeFitError):
 
@@ -79,15 +92,9 @@ Fitted bkg events        '''
   tableline +='''     \\\\'''
 
 # HACK IN PULLS
-  tableline += '''
-$\\text{excess} / \\sigma_{\\text{syst (total)}}$        '''
-  for index, n in enumerate(m['TOTAL_FITTED_bkg_events']):
-      syst_err = m['TOTAL_FITTED_bkg_events_err'][index]
-      nobs = m['nobs'][index]
-      pull_syst = -(n - nobs) / syst_err
-      pull_total = -(n - nobs) / (syst_err**2 + nobs)**0.5
-      tableline += " & ${:+.2f} ({:+.2f})$".format(pull_syst, pull_total)
-  tableline +='''     \\\\
+  tableline += _pull_line(m, add_stat=False)
+  tableline += _pull_line(m, add_stat=True)
+  tableline +='''
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
 %%'''
 
