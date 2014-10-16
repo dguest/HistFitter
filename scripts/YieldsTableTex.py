@@ -72,9 +72,25 @@ Fitted bkg events        '''
       else:
         print "\n YieldsTableTex.py WARNING:   negative symmetric error extends below 0. for total bkg pdf:  will print asymmetric error w/ truncated negative error reaching to 0."
         tableline += " & $" + str(("%.2f" %n)) + "_{-" + str(("%.2f"%n)) + "}^{+" + str(("%.2f" %m['TOTAL_FITTED_bkg_events_err'][index])) +  "}$         "
+#   tableline +='''     \\\\
+# \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
+# %%'''
+
+  tableline +='''     \\\\'''
+
+# HACK IN PULLS
+  tableline += '''
+$\\text{excess} / \\sigma_{\\text{syst (total)}}$        '''
+  for index, n in enumerate(m['TOTAL_FITTED_bkg_events']):
+      syst_err = m['TOTAL_FITTED_bkg_events_err'][index]
+      nobs = m['nobs'][index]
+      pull_syst = -(n - nobs) / syst_err
+      pull_total = -(n - nobs) / (syst_err**2 + nobs)**0.5
+      tableline += " & ${:+.2f} ({:+.2f})$".format(pull_syst, pull_total)
   tableline +='''     \\\\
 \\noalign{\\smallskip}\\hline\\noalign{\\smallskip}
 %%'''
+
 
 
   map_listofkeys = m.keys()
