@@ -136,7 +136,7 @@ Fitted bkg events        '''
 %%'''
 
 
-  
+  tableline +=r'%% MULTIJET_FILLER %%' + '\n'
 #########  #########
 ########## expected
 ######### #########
