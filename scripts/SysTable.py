@@ -19,9 +19,6 @@ from sys import exit
 from SysTableTex import *
 import pickle
 
-from logger import Logger
-log = Logger('SysTable')
-#log.setLevel('DEBUG')
 
 def getnamemap():
 
